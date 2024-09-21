@@ -1,10 +1,16 @@
 import sys
 import pygame
 import random
+import pandas as pd
+import numpy as np
 
 screenWidth = 1280
 screenHeight = 720
 
+## Initializes all data
+# All stocks
+# allStockPairs = pd.read_csv(r'/Stock Data/all_stock_info.csv')
+# print(allStockPairs)
 
 # initialze Pygame
 pygame.init()
@@ -34,8 +40,8 @@ while running:
     
     TITLE_TEXT_COLOR = (78, 70, 55) 
     TITLE_TEXT = font.render("Stock Symbol Shenanigans", True, TITLE_TEXT_COLOR)
-
     
+
     # for background color
     win.fill(backgroundColor)
 
