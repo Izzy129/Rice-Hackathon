@@ -38,7 +38,7 @@ def main_menu():
 
         # render the text
         TITLE_TEXT_COLOR = (78, 70, 55) 
-        TITLE_TEXT = font.render("Capitol Connect", True, TITLE_TEXT_COLOR)
+        TITLE_TEXT = font.render("Capital Connect", True, TITLE_TEXT_COLOR)
 
         # blit the text surface onto main display surface
         window.blit(TITLE_TEXT, (screenWidth // 2 - TITLE_TEXT.get_width() // 2, screenHeight // 2 - TITLE_TEXT.get_height() // 2))
