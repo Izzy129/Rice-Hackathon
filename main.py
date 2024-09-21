@@ -26,8 +26,8 @@ font = pygame.font.Font(font_path, font_size)
 # clock to use to track game time (fps usage)
 clock = pygame.time.Clock()
 
-
-while True:
+running = True
+while running:
     for event in pygame.event.get():
         # handles closing the game window
         if event.type == pygame.QUIT:
@@ -52,7 +52,7 @@ while True:
     # caps frame rate to 60 fps
     clock.tick(60) # should be at the end of the game loop
     
-    
+
 # quit Pygame if required
 pygame.quit()
 sys.exit()
