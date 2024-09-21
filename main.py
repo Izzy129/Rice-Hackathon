@@ -15,7 +15,7 @@ screenHeight = 720
 # initialze Pygame
 pygame.init()
 
-win = pygame.display.set_mode((screenWidth, screenHeight))
+window = pygame.display.set_mode((screenWidth, screenHeight))
 pygame.display.set_caption("Stock Symbol Shenanigans")
 
 # peach color
@@ -43,10 +43,10 @@ while running:
     
 
     # for background color
-    win.fill(backgroundColor)
+    window.fill(backgroundColor)
 
     # blit the text surface onto main display surface
-    win.blit(TITLE_TEXT, (screenWidth // 2 - TITLE_TEXT.get_width() // 2, screenHeight // 2 - TITLE_TEXT.get_height() // 2))
+    window.blit(TITLE_TEXT, (screenWidth // 2 - TITLE_TEXT.get_width() // 2, screenHeight // 2 - TITLE_TEXT.get_height() // 2))
 
 
     
