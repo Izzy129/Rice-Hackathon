@@ -71,5 +71,5 @@ def main_menu():
     # quit Pygame if required
     pygame.quit()
     sys.exit()
-
+print('skibidi')
 main_menu()
