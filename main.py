@@ -4,44 +4,40 @@ import random
 import pandas as pd
 import numpy as np
 
-screenWidth = 1280
-screenHeight = 720
-
-## Initializes all data
-# All stocks
-# allStockPairs = pd.read_csv(r'/Stock Data/all_stock_info.csv')
-# print(allStockPairs)
 
 # initialze Pygame
 pygame.init()
 
+
+# these next 5 lines are for setting up the window
+screenWidth = 1280
+screenHeight = 720
 window = pygame.display.set_mode((screenWidth, screenHeight))
 pygame.display.set_caption("Stock Symbol Shenanigans")
-
-# peach color
 backgroundColor = (250, 223, 173)
 
-# clock to use to track game time (fps usage)
-clock = pygame.time.Clock()
-running = True
 
-
-# font for text throughout game
+# these lines set up text font 
 font_path = "arcadeFont.ttf"
 font_size = 24
 font = pygame.font.Font(font_path, font_size)
 
-while running:
+
+# clock to use to track game time (fps usage)
+clock = pygame.time.Clock()
+
+
+while True:
     for event in pygame.event.get():
         # handles closing the game window
         if event.type == pygame.QUIT:
             running = False
     # render the text
-    
+        
     TITLE_TEXT_COLOR = (78, 70, 55) 
     TITLE_TEXT = font.render("Stock Symbol Shenanigans", True, TITLE_TEXT_COLOR)
     
-
+    
     # for background color
     window.fill(backgroundColor)
 
@@ -60,3 +56,4 @@ while running:
 # quit Pygame if required
 pygame.quit()
 sys.exit()
+
