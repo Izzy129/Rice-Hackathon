@@ -169,7 +169,5 @@ def option_screen():
         
         pygame.display.flip()
         clock.tick(60)
-    # pygame.quit()
-    # sys.exit()
 
 option_screen()
