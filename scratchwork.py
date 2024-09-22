@@ -31,3 +31,4 @@ popularTechDict = dict(zip(popularTech.Ticker, popularTech.Company))
 popularDict = dict(zip(popular.Ticker, popular.Company))
 sp500Dict = dict(zip(sp500.Symbol, sp500.Security))
 
+print(popularTechDict)
