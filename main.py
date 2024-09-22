@@ -232,8 +232,6 @@ def play_matching(category, difficulty):
             count = 0
             cards = []
               
-                        
-
         for button in allCards:
             button.update(window)
         
