@@ -71,7 +71,5 @@ def main_menu():
     # quit Pygame if required
     pygame.quit()
     sys.exit()
-
-
 main_menu()
 
