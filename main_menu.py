@@ -36,16 +36,16 @@ clock = pygame.time.Clock()
 # storing them in here allows us to detect if they were pressed later in event handling
 buttons = []
 
-                     #image, (x_coord, y_coord),                       text,       font,      base_color,       hovering_color,      border_color,  border_width
-start_button = Button(None, (screenWidth // 4, screenHeight * 3 // 4), "Start", button_font, BUTTON_TEXT_COLOR, BUTTON_HOVER_COLOR, BUTTON_BORDER_COLOR, 5)
+                     #image, (x_coord, y_coord),                       text,       font,      base_color,       hovering_color
+start_button = Button((screenWidth // 4, screenHeight * 3 // 4), "Start", button_font, BUTTON_TEXT_COLOR, BUTTON_HOVER_COLOR)
 buttons.append(start_button)
 
-                     #image,           (x_coord, y_coord),                  text,       font,      base_color,       hovering_color,      border_color,  border_width
-options_button = Button(None, (screenWidth // 2, screenHeight * 3 // 4), "Options", button_font, BUTTON_TEXT_COLOR, BUTTON_HOVER_COLOR, BUTTON_BORDER_COLOR, 5)
+                     #image,           (x_coord, y_coord),                  text,       font,      base_color,       hovering_color
+options_button = Button((screenWidth // 2, screenHeight * 3 // 4), "Options", button_font, BUTTON_TEXT_COLOR, BUTTON_HOVER_COLOR)
 buttons.append(options_button)
 
-                     #image,           (x_coord, y_coord),                  text,       font,      base_color,       hovering_color,      border_color,  border_width
-quit_button = Button(None, (screenWidth * 3 // 4, screenHeight * 3 // 4 ), "Quit", button_font, BUTTON_TEXT_COLOR, BUTTON_HOVER_COLOR, BUTTON_BORDER_COLOR, 5)
+                     #image,           (x_coord, y_coord),                  text,       font,      base_color,       hovering_color
+quit_button = Button((screenWidth * 3 // 4, screenHeight * 3 // 4 ), "Quit", button_font, BUTTON_TEXT_COLOR, BUTTON_HOVER_COLOR)
 buttons.append(quit_button)
 
 def main_menu():
@@ -64,6 +64,8 @@ def main_menu():
                     # check if the mouse click was within the button's rectangle
                     # this code is from the button class
                     if button.checkForInput(event.pos):
+                        # to change the color of the button when clicked
+                        button.clicked = not button.clicked
                         # rn im using the button text to determine which button was clicked, probably should change later
                         if button.text_input == "Start":
                             print("Start Game button clicked")
