@@ -22,6 +22,7 @@ class matching_cards():
 		self.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))
 
 	def update(self, screen):
+		pygame.draw.rect(screen, (255,0,0), self.rect, 5)
 		# If the card is flipped, show the front image; otherwise, show the back
 		if self.is_flipped:
 			screen.blit(self.image, self.rect)

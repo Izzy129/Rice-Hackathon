@@ -1,11 +1,11 @@
 import pygame
 class Button():
 	global unclicked_image
-	unclicked_image = pygame.image.load("unclickedbutton.png")
+	unclicked_image = pygame.image.load(r"Assets\unclickedbutton.png")
 	unclicked_image = pygame.transform.scale(unclicked_image, (300,100))
 	
 	global clicked_image
-	clicked_image = pygame.image.load("clickedbutton.png")
+	clicked_image = pygame.image.load(r"Assets\clickedbutton.png")
 	clicked_image = pygame.transform.scale(clicked_image, (300,100))
 
 
@@ -24,16 +24,20 @@ class Button():
 		self.width = size[0]
 		self.height = size[1]
 		self.clicked = False
+		self.unclicked_image = unclicked_image
+		self.clicked_image = clicked_image
+  
 
   
 	def update(self, screen):
-		if self.image is not None:
-			if self.clicked:
-				screen.blit(clicked_image, self.rect)
-			else:
-				screen.blit(unclicked_image, self.rect)
+		# debugging hitbox
+		# pygame.draw.rect(screen, (255,0,0), self.rect, 5)
+		if self.clicked:
+			screen.blit(self.clicked_image, self.rect)
+		else:
+			screen.blit(self.unclicked_image, self.rect)
 		screen.blit(self.text, self.text_rect)
-	
+		
 
 	def checkForInput(self, position):
 		#global clicked

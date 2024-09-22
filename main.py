@@ -4,10 +4,16 @@ import random
 import pandas as pd
 import numpy as np
 
-from button_class import Button
-from main_menu import main_menu
-from options import option_screen
-from memory_matching import matching_cards
+from Classes.button_class import Button
+from Classes.main_menu import main_menu
+from Classes.options import option_screen
+from Classes.memory_matching import matching_cards
+
+
+# Function to filter rows based on the length of the second column
+def filter_by_length(df, column_name, max_length):
+    return df[df[column_name].str.len() <= max_length]
+
 
 ## Generates all data sets
 allStockPairs = pd.read_csv(r"Stock Data/all_stock_info.csv")
@@ -28,6 +34,7 @@ popular = pd.read_csv(r"Stock Data\popular.csv")
 
 sp500 = pd.read_csv(r"Stock Data\s&p500_stocks.csv")
 sp500 = sp500[["Symbol", "Security"]]
+sp500 = filter_by_length(sp500, "Security", 15)
 
 ## Dictionaries for each set of stocks (symbol --> name)
 allStockPairDicts = dict(zip(allStockPairs.Ticker, allStockPairs.Name))
@@ -51,11 +58,11 @@ backgroundColor = (250, 223, 173)
 
 
 ## Button Images
-buttonImage = pygame.image.load("bluebutton.png")
+buttonImage = pygame.image.load(r"Assets\bluebutton.png")
 buttonImage = pygame.transform.scale(buttonImage,(200,100))
 
 # these lines set up text font 
-font_path = "arcadeFont.ttf"
+font_path = r"Assets\arcadeFont.ttf"
 font_size = 24
 font = pygame.font.Font(font_path, font_size)
 

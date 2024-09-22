@@ -6,6 +6,35 @@ import numpy as np
 from button_class import Button
 
 
+# sample dictionary for game
+tech_companies = {
+    "AAPL": "Apple Inc.",
+    "MSFT": "Microsoft Corporation",
+    "GOOGL": "Alphabet Inc.",
+    "AMZN": "Amazon.com Inc.",
+    "FB": "Meta Platforms Inc.",
+    "TSLA": "Tesla Inc.",
+    "NVDA": "NVIDIA Corporation",
+    "ADBE": "Adobe Inc.",
+    "NFLX": "Netflix Inc.",
+    "INTC": "Intel Corporation",
+    "CSCO": "Cisco Systems Inc.",
+    "ORCL": "Oracle Corporation",
+    "IBM": "International Business Machines Corporation",
+    "CRM": "Salesforce.com Inc.",
+    "PYPL": "PayPal Holdings Inc.",
+    "AMD": "Advanced Micro Devices Inc.",
+    "SQ": "Block Inc.",
+    "UBER": "Uber Technologies Inc.",
+    "LYFT": "Lyft Inc.",
+    "SNAP": "Snap Inc.",
+    "TWTR": "Twitter Inc.",
+    "ZM": "Zoom Video Communications Inc.",
+    "SHOP": "Shopify Inc.",
+    "SPOT": "Spotify Technology S.A.",
+    "DOCU": "DocuSign Inc."
+}
+
 # initialze Pygame
 pygame.init()
 
@@ -25,7 +54,7 @@ BUTTON_BORDER_COLOR = (42, 42, 42)  # Jett color
 
 
 # these lines set up text font 
-font_path = "arcadeFont.ttf"
+font_path = r"Assets\arcadeFont.ttf"
 title_font = pygame.font.Font(font_path, 48) # size 48 font 
 button_font = pygame.font.Font(font_path, 24) # size 24 font
 
@@ -33,22 +62,31 @@ button_font = pygame.font.Font(font_path, 24) # size 24 font
 clock = pygame.time.Clock()
 
 # let make a list for the buttons
-# storing them in here allows us to detect if they were pressed later in event handling
+# Create buttons in a 3x3 grid
+button_width = 300
+button_height = 150
+button_spacing = 20
+rows, cols = 3, 3
 buttons = []
 
-                     #image, (x_coord, y_coord),                       text,       font,      base_color,       hovering_color
-start_button = Button((screenWidth // 4, screenHeight * 3 // 4), "Start", button_font, BUTTON_TEXT_COLOR, BUTTON_HOVER_COLOR)
-buttons.append(start_button)
 
-                     #image,           (x_coord, y_coord),                  text,       font,      base_color,       hovering_color
-options_button = Button((screenWidth // 2, screenHeight * 3 // 4), "Options", button_font, BUTTON_TEXT_COLOR, BUTTON_HOVER_COLOR)
-buttons.append(options_button)
+for i in range(rows):
+    for j in range(cols):
+        x = screenWidth // 4 * (j + 1)
+        y = screenHeight // 4 * (i + 1)
 
-                     #image,           (x_coord, y_coord),                  text,       font,      base_color,       hovering_color
-quit_button = Button((screenWidth * 3 // 4, screenHeight * 3 // 4 ), "Quit", button_font, BUTTON_TEXT_COLOR, BUTTON_HOVER_COLOR)
-buttons.append(quit_button)
+        # select random company key from tech_companies dictionary
+        company_symbol = random.choice(list(tech_companies.keys()))
+        company_name = tech_companies[company_symbol]
+        
+        # remove key-value company
+        del tech_companies[company_symbol]
 
-def main_menu():
+        button_text = company_symbol
+        buttons.append(Button((x, y), button_text, button_font, BUTTON_TEXT_COLOR, BUTTON_HOVER_COLOR, size=(button_width, button_height)))
+
+
+def game():
     running = True
     while running:
         # captures pygame events
@@ -64,32 +102,23 @@ def main_menu():
                     # check if the mouse click was within the button's rectangle
                     # this code is from the button class
                     if button.checkForInput(event.pos):
-                        # to change the color of the button when clicked
-                        button.clicked = not button.clicked
-                        # rn im using the button text to determine which button was clicked, probably should change later
-                        if button.text_input == "Start":
-                            print("Start Game button clicked")
-                        elif button.text_input == "Options":
-                            print("Options button clicked")
-                        elif button.text_input == "Quit":
-                            running = False 
+                        print(f"Button {button.text_input} was clicked!")
         # end of event loop
         
         
         # for background color
         window.fill(backgroundColor)
 
-        # render the title 
-        TITLE_TEXT = title_font.render("Capital Connect", True, TITLE_TEXT_COLOR)
-
-        # blit the title onto main display surface
-        window.blit(TITLE_TEXT, (screenWidth // 2 - TITLE_TEXT.get_width() // 2, screenHeight // 4 - TITLE_TEXT.get_height() // 2))
-
+    
         # draw buttons on window
         for button in buttons:
             # this method from class already blits button to screen, don't blit buttons in main loop
             button.update(window)
     
+        
+
+
+
 
         # DEBUGGING: draw lines to show half and quarter marks of the screen
         pygame.draw.line(window, (0, 0, 0), (0, screenHeight // 2), (screenWidth, screenHeight // 2), 1)
@@ -108,7 +137,6 @@ def main_menu():
         # caps frame rate to 60 fps
         clock.tick(60) # should be at the end of the game loop
     # quit Pygame if required
-    # pygame.quit()
-    # sys.exit()
-    
-main_menu()
+    pygame.quit()
+    sys.exit()
+game()

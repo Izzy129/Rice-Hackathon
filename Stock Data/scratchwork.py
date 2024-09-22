@@ -2,6 +2,7 @@ import pandas as pd
 
 ## Initializes all stock data
 # All stocks
+
 allStockPairs = pd.read_csv(r"Stock Data/all_stock_info.csv")
 allStockPairs = allStockPairs.drop("Exchange", axis = 1)
 

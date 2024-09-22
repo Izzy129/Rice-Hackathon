@@ -17,7 +17,7 @@ pygame.display.set_caption("Settings")
 backgroundColor = (250, 223, 173)
 
 # these lines set up text font 
-font_path = "arcadeFont.ttf"
+font_path = r"Assets\arcadeFont.ttf"
 font_size = 24
 smaller_font_size = 20
 smaller_font = pygame.font.Font(font_path,smaller_font_size)
@@ -34,9 +34,28 @@ gamemode =  "Memory Match"
 category = "All Stock"
 
 all_buttons = []
+back_start_buttons = []
 difficulty_buttons = []
 gamemode_buttons = []
 category_buttons = []
+
+
+
+back_button = Button((200,50),"Back",font,"Black","white")
+back_button.unclicked_image = pygame.image.load(r"Assets\backbutton.png") 
+back_button.unclicked_image = pygame.transform.scale(back_button.unclicked_image, (300,100))
+back_button.clicked_image = pygame.image.load(r"Assets\backbutton.png") 
+back_button.clicked_image = pygame.transform.scale(back_button.clicked_image, (300,100))
+back_start_buttons.append(back_button)
+
+
+
+start_button = Button((1100,50),"Start",font,"Black","white")
+start_button.unclicked_image = pygame.image.load(r"Assets\startbutton.png") 
+start_button.unclicked_image = pygame.transform.scale(start_button.unclicked_image, (300,100))
+start_button.clicked_image = pygame.image.load(r"Assets\startbutton.png") 
+start_button.clicked_image = pygame.transform.scale(start_button.clicked_image, (300,100))
+back_start_buttons.append(start_button)
 
 # add difficulty buttons to difficulties list
 easy_button = Button((200,screenHeight//2),"Easy",font,"Black","white")
@@ -87,6 +106,7 @@ all_buttons = []
 all_buttons.extend(difficulty_buttons)
 all_buttons.extend(gamemode_buttons)
 all_buttons.extend(category_buttons)
+all_buttons.extend(back_start_buttons)
 
 def option_screen():
     global difficulty, gamemode, category
@@ -135,6 +155,8 @@ def option_screen():
                             button.clicked = True
                             
                             category = button.text_input
+                        if button in back_start_buttons:
+                            pass
 
         window.fill(backgroundColor)
         title_text_color = (0,0,0)
@@ -142,14 +164,6 @@ def option_screen():
         #Option Title Making
         opt_title_text = title_font.render("Options", True, title_text_color)
         window.blit(opt_title_text, (screenWidth//2 - opt_title_text.get_width()//2,10))
-
-        #Back Button Making
-        back_title_text = title_font.render("Back", True, title_text_color)
-        window.blit(back_title_text, (200,10))
-        
-        #Start Button Making
-        start_title_text = title_font.render("Start", True, title_text_color)
-        window.blit(start_title_text, (1100,10))
         
         #Difficulty Title Making
         difficulty_title_text = title_font.render("Difficulty", True, title_text_color)
@@ -171,3 +185,4 @@ def option_screen():
         clock.tick(60)
 
 option_screen()
+
