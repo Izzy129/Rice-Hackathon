@@ -150,9 +150,9 @@ def play_matching(category, difficulty):
                         cards.append(button)
                         if count == 2:  # When two cards are clicked, start the delay
                             delay_start_time = pygame.time.get_ticks()
-                if homeButton.checkForInput(event.pos):
-                    pygame.quit()
-                    return
+                # if homeButton.checkForInput(event.pos):
+                #     pygame.quit()
+                #     return
         
         window.fill(backgroundColor)
 
@@ -199,5 +199,7 @@ def play_matching(category, difficulty):
         pygame.display.flip()
         clock.tick(60)
     # quit Pygame if required
+    pygame.quit()
+    return 
 
-play_matching(sp500Dict, "hard")
+play_matching(sp500Dict, "medium")

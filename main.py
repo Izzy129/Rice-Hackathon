@@ -4,10 +4,10 @@ import random
 import pandas as pd
 import numpy as np
 
-from Classes.button_class import Button
-from Classes.main_menu import main_menu
-from Classes.options import option_screen
-from Classes.memory_matching import matching_cards
+from button_class import Button
+from main_menu import main_menu
+from options import option_screen
+from memory_matching import matching_cards
 
 
 # Function to filter rows based on the length of the second column
@@ -78,7 +78,7 @@ def main():
 
         main_menu()
         option_screen()
-        matching_cards(sp500Dict, "easy")
+        matching_cards(sp500Dict, "medium")
         
         
         # update display with new frame
