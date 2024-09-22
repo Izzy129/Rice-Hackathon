@@ -16,12 +16,6 @@ window = pygame.display.set_mode((screenWidth, screenHeight))
 pygame.display.set_caption("Settings")
 backgroundColor = (250, 223, 173)
 
-
-## Button Images
-# diff_button_image = pygame.image.load("unclickedbutton.png")
-# diff_button_image = pygame.transform.scale(diff_button_image, (300,100))
-
-
 # these lines set up text font 
 font_path = "arcadeFont.ttf"
 font_size = 24
@@ -169,67 +163,4 @@ def option_screen():
         clock.tick(60)
     pygame.quit()
     # sys.exit()
-def main_menu():
-    running = True
-    while running:
-         # captures pygame events
-        for event in pygame.event.get():
-            # handles closing the game window
-            if event.type == pygame.QUIT:
-                running = False
-                
-            # handles button clicks
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                # lets loop through all buttons to find which one was clicked
-                for button in buttons:
-                    # check if the mouse click was within the button's rectangle
-                    # this code is from the button class
-                    if button.checkForInput(event.pos):
-                        # rn im using the button text to determine which button was clicked, probably should change later
-                        if button.text_input == "Start":
-                            print("Start Game button clicked")
-                        elif button.text_input == "Options":
-                            print("Options button clicked")
-                        elif button.text_input == "Quit":
-                            running = False 
-        # end of event loop
-        
-        # for background color
-        window.fill(backgroundColor)
-
-        # render the text
-        TITLE_TEXT_COLOR = (78, 70, 55) 
-        TITLE_TEXT = font.render("Capitol Connect", True, TITLE_TEXT_COLOR)
-
-        # blit the text surface onto main display surface
-        window.blit(TITLE_TEXT, (screenWidth // 2 - TITLE_TEXT.get_width() // 2, screenHeight // 2 - TITLE_TEXT.get_height() // 2))
-
-        # update the display with new frame
-        # pygame.display.flip()  
-        
-        # caps frame rate to 60 fps
-        clock.tick(60) # should be at the end of the game loop
-
-        ## Make Buttons
-        
-        OPTIONS_BUTTON = Button(image=buttonImage, pos=(screenWidth//3, screenHeight*3//4), 
-                            text_input="OPTIONS", font = font, base_color="White", hovering_color="White")
-        
-        START_BUTTON = Button(image=buttonImage, pos=(screenWidth*2//3, screenHeight*3//4), 
-                            text_input="START", font = font, base_color="White", hovering_color="White")
-
-        
-        for button in [OPTIONS_BUTTON, START_BUTTON]:
-            button.update(window)
-      
-        pygame.display.update()
-    # quit Pygame if required
-    pygame.quit()
-    sys.exit()
-
-print('skibidi')
-# main_menu()
 option_screen()
-print(difficulty)
-print(gamemode)
-print(category)
