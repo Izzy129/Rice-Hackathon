@@ -143,6 +143,10 @@ def option_screen():
         opt_title_text = title_font.render("Options", True, title_text_color)
         window.blit(opt_title_text, (screenWidth//2 - opt_title_text.get_width()//2,10))
 
+        #Back Button Making
+        back_title_text = title_font.render("Back", True, title_text_color)
+        window.blit(opt_title_text, (screenWidth//2 - opt_title_text.get_width()//2,10))
+        
         #Difficulty Title Making
         difficulty_title_text = title_font.render("Difficulty", True, title_text_color)
         window.blit(difficulty_title_text,(screenWidth//2 - difficulty_title_text.get_width()//2, screenHeight//2 -100))

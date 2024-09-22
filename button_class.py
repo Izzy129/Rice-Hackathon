@@ -9,7 +9,7 @@ class Button():
 	clicked_image = pygame.transform.scale(clicked_image, (300,100))
 
 
-	def __init__(self, pos, text_input, font, base_color, hovering_color, border_color=None, border_width=0, size=(300,100)):
+	def __init__(self, pos, text_input, font, base_color, hovering_color, size=(300,100)):
 		self.image = unclicked_image
 		self.x_pos = pos[0]
 		self.y_pos = pos[1]
@@ -21,17 +21,12 @@ class Button():
 			self.image = self.text
 		self.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))
 		self.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))
-		self.border_color = border_color
-		self.border_width = border_width
 		self.width = size[0]
 		self.height = size[1]
 		self.clicked = False
 
   
 	def update(self, screen):
-		if self.border_color and self.border_width > 0:
-			pygame.draw.rect(screen, self.border_color, self.rect.inflate(self.border_width * 2, self.border_width * 2), self.border_width)
-  
 		if self.image is not None:
 			if self.clicked:
 				screen.blit(clicked_image, self.rect)
