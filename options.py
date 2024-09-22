@@ -13,7 +13,7 @@ pygame.init()
 screenWidth = 1280
 screenHeight = 720
 window = pygame.display.set_mode((screenWidth, screenHeight))
-pygame.display.set_caption("Stock Symbol Shenanigans")
+pygame.display.set_caption("Settings")
 backgroundColor = (250, 223, 173)
 
 
@@ -35,9 +35,9 @@ title_font = pygame.font.Font(font_path,35)
 clock = pygame.time.Clock()
 
 #These variables will be changed in Options and used in the Play function
-difficulty = "medium"
-gamemode =  "memory match"
-category = "all stock"
+difficulty = "Medium"
+gamemode =  "Memory Match"
+category = "All Stock"
 
 all_buttons = []
 difficulty_buttons = []
@@ -111,14 +111,35 @@ def option_screen():
                         # ok now we found the button that was clicked
                         # lets check which type of button it is and act accordingly
                         if button in gamemode_buttons:
-                            # if any button in gamemode buttons is already clicked, unclick the clicked one and click the unclicked one
-                            button.clicked = not button.clicked
+                            # we only want one clicked button at a time
+                                                        
+                            # lets unclick all other buttons in gamemode buttons
+                            for btn in gamemode_buttons:
+                                btn.clicked = False
+                            
+                            # now lets click the current button
+                            button.clicked = True
                             gamemode = button.text_input
                         if button in difficulty_buttons:
-                            button.clicked = not button.clicked
+                            # we only want one clicked button at a time
+                            
+                            # lets unclick all other buttons in difficulty buttons
+                            for btn in difficulty_buttons:
+                                btn.clicked = False
+                            
+                            # now lets click the current button
+                            button.clicked = True
                             difficulty = button.text_input
                         if button in category_buttons:
-                            button.clicked = not button.clicked
+                            # we only want one clicked button at a time
+                            
+                            # lets unclick all other buttons in category buttons
+                            for btn in category_buttons:
+                                btn.clicked = False
+                            
+                            # now lets click the current button
+                            button.clicked = True
+                            
                             category = button.text_input
 
         window.fill(backgroundColor)
