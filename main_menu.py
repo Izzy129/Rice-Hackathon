@@ -108,6 +108,7 @@ def main_menu():
         # caps frame rate to 60 fps
         clock.tick(60) # should be at the end of the game loop
     # quit Pygame if required
-    pygame.quit()
-    sys.exit()
+    # pygame.quit()
+    # sys.exit()
+    
 main_menu()

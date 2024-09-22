@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 from button_class import Button
 
-class Matching_Cards():
+class matching_cards():
 	def __init__(self, image, pos, text_input, font, base_color, hovering_color, back_image = None):
 		self.image = image
 		self.back_image = back_image

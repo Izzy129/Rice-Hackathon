@@ -83,7 +83,7 @@ for i in range(rows):
         del tech_companies[company_symbol]
 
         button_text = company_symbol
-        buttons.append(Button(None, (x, y), button_text, button_font, BUTTON_TEXT_COLOR, BUTTON_HOVER_COLOR, BUTTON_BORDER_COLOR, 2))
+        buttons.append(Button((x, y), button_text, button_font, BUTTON_TEXT_COLOR, BUTTON_HOVER_COLOR, size=(button_width, button_height)))
 
 
 def game():

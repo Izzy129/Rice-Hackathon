@@ -160,3 +160,20 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+hackrice/Scripts/debugpy.exe
+hackrice/Scripts/ipython.exe
+hackrice/Scripts/ipython3.exe
+hackrice/Scripts/jupyter-kernel.exe
+hackrice/Scripts/jupyter-kernelspec.exe
+hackrice/Scripts/jupyter-migrate.exe
+hackrice/Scripts/jupyter-run.exe
+hackrice/Scripts/jupyter-troubleshoot.exe
+hackrice/Scripts/jupyter.exe
+hackrice/Scripts/pygmentize.exe
+hackrice/Scripts/pywin32_postinstall.py
+hackrice/Scripts/pywin32_testall.py
+hackrice/share/jupyter/kernels/python3/logo-32x32.png
+hackrice/share/jupyter/kernels/python3/logo-64x64.png
+hackrice/share/jupyter/kernels/python3/kernel.json
+hackrice/share/jupyter/kernels/python3/logo-svg.svg
+hackrice/share/man/man1/ipython.1

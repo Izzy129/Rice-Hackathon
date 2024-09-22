@@ -145,7 +145,11 @@ def option_screen():
 
         #Back Button Making
         back_title_text = title_font.render("Back", True, title_text_color)
-        window.blit(opt_title_text, (screenWidth//2 - opt_title_text.get_width()//2,10))
+        window.blit(back_title_text, (200,10))
+        
+        #Start Button Making
+        start_title_text = title_font.render("Start", True, title_text_color)
+        window.blit(start_title_text, (1100,10))
         
         #Difficulty Title Making
         difficulty_title_text = title_font.render("Difficulty", True, title_text_color)
@@ -165,6 +169,7 @@ def option_screen():
         
         pygame.display.flip()
         clock.tick(60)
-    pygame.quit()
+    # pygame.quit()
     # sys.exit()
+
 option_screen()

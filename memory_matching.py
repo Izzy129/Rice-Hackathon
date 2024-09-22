@@ -4,7 +4,7 @@ import random
 import pandas as pd
 import numpy as np
 from button_class import Button
-from real_matching import Matching_Cards
+from matching_cards_class import matching_cards
 
 # initialze Pygame
 pygame.init()
@@ -90,7 +90,7 @@ def play_matching(category, difficulty):
     for i in range (1, x+1):
         for j in range(1, y+1):
             item = allItems[(i-1)*y + (j - 1)]
-            allCards.append(Matching_Cards(image=buttonImage, pos=(screenWidth * i//(x+1), screenHeight*j//(y+1)), 
+            allCards.append(matching_cards(image=buttonImage, pos=(screenWidth * i//(x+1), screenHeight*j//(y+1)), 
             text_input=item, font = pygame.font.Font(font_path, 10), base_color="Black", hovering_color="White", back_image=buttonImage))
     
     #Flag for the initial flipping
@@ -106,7 +106,7 @@ def play_matching(category, difficulty):
 
     ## Win Screen
     winImage = pygame.image.load("stonks.jpg")
-    homeButton = Matching_Cards(image=buttonImage, pos=(screenWidth//2, screenHeight*9//10), 
+    homeButton = matching_cards(image=buttonImage, pos=(screenWidth//2, screenHeight*9//10), 
             text_input="Main Menu", font = pygame.font.Font(font_path, 14), base_color="Black", hovering_color="White", back_image=buttonImage)
 
     ## Running Loop
@@ -150,8 +150,9 @@ def play_matching(category, difficulty):
                         cards.append(button)
                         if count == 2:  # When two cards are clicked, start the delay
                             delay_start_time = pygame.time.get_ticks()
-                # if homeButton.checkForInput(event.pos):
-                #     main_menu()
+                if homeButton.checkForInput(event.pos):
+                    pygame.quit()
+                    return
         # After two cards are clicked, introduce a delay before the next action
         if count == 2 and current_time - delay_start_time >= 300:  # Wait for 500ms
             if is_matching(cards[0].text_input, cards[1].text_input):
@@ -171,7 +172,5 @@ def play_matching(category, difficulty):
         pygame.display.update()
         clock.tick(60)
     # quit Pygame if required
-    pygame.quit()
-    sys.exit()
 
 play_matching(sp500Dict, "easy")
